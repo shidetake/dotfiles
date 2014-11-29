@@ -1,0 +1,18 @@
+[user]
+	name = shidetake
+	email = shidetake@gmail.com
+[color]
+	diff = auto
+[diff]
+    external = git_diff_wrapper
+[pager]
+    diff =
+[alias]
+    la = log --oneline --decorate --graph --branches --tags --remotes
+    dc = diff --cached
+    lskip = !git ls-files -v | grep ^S
+[core]
+	editor = /usr/bin/vim
+	excludesfile = ~/.gitignore
+[push]
+	default = simple
