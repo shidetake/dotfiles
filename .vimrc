@@ -11,6 +11,9 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
+" ファイル名補完
+set wildmode=list:longest
+
 " マウスホイールでスクロール
 set mouse=a
 set ttymouse=xterm2
