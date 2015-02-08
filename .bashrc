@@ -3,7 +3,7 @@ if [ "$(uname)" == "Darwin" ]; then
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     os=linux
 fi
-echo $os
+#echo $os
 
 if [ -f ~/.bashrc.local ]; then
     source ~/.bashrc.local
