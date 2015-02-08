@@ -10,8 +10,8 @@ if [ -f ~/.bashrc.local ]; then
 fi
 
 # git completion
-source .git-prompt.sh
-source .git-completion.bash
+source ~/.git-prompt.sh
+source ~/.git-completion.bash
 GIT_PS1_SHOWDIRTYSTATE=true
 export PS1='\u@\h:\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
 
