@@ -11,6 +11,7 @@
     la = log --oneline --decorate --graph --branches --tags --remotes
     dc = diff --cached
     lskip = !git ls-files -v | grep ^S
+    co = checkout
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore
