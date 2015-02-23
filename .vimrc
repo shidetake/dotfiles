@@ -41,6 +41,9 @@ set visualbell t_vb=
 " 行数表示
 set number
 
+" 折り返さない
+set nowrap
+
 " 検索ハイライト有効
 set hlsearch
 
