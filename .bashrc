@@ -22,6 +22,7 @@ alias gvim=vim
 if [ $os == "osx" ]; then
     alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
 #    alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+    alias lsusb='system_profiler SPUSBDataType'
 
     export EDITOR=/usr/local/bin/vim
     export GOPATH=$HOME/.go
