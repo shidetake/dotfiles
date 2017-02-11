@@ -12,6 +12,7 @@
     dc = diff --cached
     lskip = !git ls-files -v | grep ^S
     co = checkout
+    st = status
 [core]
 	editor = /usr/bin/vim
 	excludesfile = ~/.gitignore

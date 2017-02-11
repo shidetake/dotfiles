@@ -11,6 +11,8 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
+runtime macros/matchit.vim
+
 " ファイル名補完
 set wildmode=list:longest
 
@@ -31,6 +33,11 @@ map fc <Plug>(func_comment)
 " clipboard
 "set clipboard+=unnamed
 
+" 中括弧補完
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
+
 " no backup
 set nobackup
 set noswapfile
@@ -42,7 +49,7 @@ set visualbell t_vb=
 set number
 
 " 折り返さない
-set nowrap
+"set nowrap
 
 " 検索ハイライト有効
 set hlsearch
@@ -109,6 +116,9 @@ NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle "tyru/current-func-info.vim"
+NeoBundle "tyru/open-browser.vim"
+NeoBundle "kannokanno/previm"
+NeoBundle 'skwp/vim-rspec'
 
 " colorscheme
 NeoBundle 'ujihisa/unite-colorscheme'
@@ -228,6 +238,44 @@ function! MyMode()
 endfunction
 
 " quickrun
+nnoremap [Quickrun] <nop>
+nmap <space>q [Quickrun]
+
+let s:hook = {'name': 'make_exec', 'kind': 'hook', 'config': {'enable': 0}}
+function! s:hook.on_success(session, context)
+    :QuickRun exec_only
+endfunction
+
+call quickrun#module#register(s:hook, 1)
+unlet s:hook
+
 let g:quickrun_config = {}
 let g:quickrun_config._ = {'runner' : 'vimproc', "runner/vimproc/updatetime" : 10}
-let g:quickrun_config['python'] = {'hook/output_encode/enable' : 1, 'hook/output_encode/encoding' : 'utf-8:utf-8'}
+let g:quickrun_config.python = {'hook/output_encode/enable' : 1, 'hook/output_encode/encoding' : 'utf-8:utf-8'}
+let g:quickrun_config.make = {'command': 'make', 'exec': '%c', 'hook/make_exec/enable': 1}
+let g:quickrun_config.exec_only = {'command': expand('%:p:r'), 'exec': '%c'}
+nnoremap [Quickrun]m :QuickRun make<CR>
+
+
+" previm
+nnoremap [Previm] <nop>
+nmap <space>p [Previm]
+nnoremap [Previm]o :PrevimOpen<CR>
+
+set showcmd
+
+
+" gtags
+nnoremap [gtags] <nop>
+nmap <space>g [gtags]
+let g:Gtags_Auto_Map=1
+nmap [gtags]p :Gtags -r <c-r><c-w><CR>
+
+" ruby spec
+nnoremap [RSpec] <nop>
+nmap <space>r [RSpec]
+nnoremap [RSpec]r :RunSpec<CR>
+
+" syntastic
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
+let g:syntastic_ruby_checkers = ['rubocop']
