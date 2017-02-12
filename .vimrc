@@ -1,7 +1,9 @@
 let $MYVIMRC = "~/.vimrc"
 
 " shell
-set shell=C:\Windows\system32\cmd.exe
+if has("win32")
+    set shell=C:\Windows\system32\cmd.exe
+endif
 
 " tab/indent
 set tabstop=4
