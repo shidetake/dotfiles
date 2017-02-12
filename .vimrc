@@ -15,7 +15,7 @@ autocmd FileType text setlocal textwidth=0
 " encoding
 set fenc=cp932
 "set fenc=utf-8
-set fencs=guess, iso-2022-jp, utf-16, cp932
+set fencs=guess,iso-2022-jp,utf-16,cp932
 
 " filer
 " tree view
@@ -33,7 +33,7 @@ set iminsert=0
 set imsearch=-1
 
 " search
-set hisearch
+set hlsearch
 
 " wrap
 set nowrap
@@ -42,12 +42,12 @@ set nowrap
 set mouse=a
 
 " diff
-set diffopt=filter ", iwhite
+set diffopt=filler ", iwhite
 
 " statusline
 set laststatus=2
 let g:lightline = {
-    \ 'colorscheme': 'wonbat',
+    \ 'colorscheme': 'wombat',
     \}
 
 " bracket
@@ -69,10 +69,10 @@ nnoremap <silent> [gtags]c :!gtags<CR>
 nnoremap <silent> [gtags]p :!gtags --gtagslabel=pygments<CR>
 
 " key map
-imap <c-j><esc>
-nnoremap <c-h><c-o>
-nnoremap <c-l><c-i>
-" nnoremap <expr><c-t> ':tabe %<CR>'
+imap <c-j> <esc>
+nnoremap <c-h> <c-o>
+nnoremap <c-l> <c-i>
+" nnoremap <expr> <c-t> ':tabe %<CR>'
 
 "-------------------------------------------------------------------------------
 " タブのクローンを作る
@@ -280,7 +280,7 @@ au BufNewFile, BufRead *.diag set filetype=blockdiag
 au BufNewFile, BufRead *.cls set filetype=vb
 
 " vimshell
-nnoremap <silent> !:VimShellTab<CR>
+nnoremap <silent> ! :VimShellTab<CR>
 
 " comment
 nnoremap fc :CommentWrite<CR>
@@ -403,7 +403,7 @@ nmap [altr]h <Plug>(altr-back)
 call altr#define('autoload/%.vim', 'doc/%.txt', 'plugin/%.vim')
 
 " vim-alignta
-vnoremap [alignta]
+vnoremap [alignta] <nop>
 vmap <space>a [alignta]
 vnoremap <silent> [alignta]\| :Alignta \|<CR>
 vnoremap <silent> [alignta]c :Alignta \:<CR>
