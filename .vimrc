@@ -15,7 +15,7 @@ autocmd FileType text setlocal textwidth=0
 " encoding
 set fenc=cp932
 "set fenc=utf-8
-set fencs=guess,iso-2022-jp,utf-16,cp932
+set fencs=guess,iso-2022-jp,utf-8,cp932
 
 " filer
 " tree view
