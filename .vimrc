@@ -3,6 +3,38 @@ let $MYVIMRC = "~/.vimrc"
 " shell
 if has("win32")
     set shell=C:\Windows\system32\cmd.exe
+elseif has("mac")
+    " read vimrc_example
+    source $VIMRUNTIME/vimrc_example.vim
+
+    " マウスホイールでスクロール
+    set ttymouse=xterm2
+    map <ScrollWheelUp> <C-Y>
+    map <S-ScrollWheelUp> <C-U>
+    map <ScrollWheelDown> <C-E>
+    map <S-ScrollWheelDown> <C-D>
+
+    " comment
+    map fc <Plug>(func_comment)
+
+    " clipboard
+    "set clipboard+=unnamed
+
+    " ビープ音を消す
+    set visualbell t_vb=
+
+    " 行数表示
+    set number
+
+    " インクリメンタルサーチ
+    set incsearch
+
+    " vim diff color
+    hi DiffAdd      ctermfg=black ctermbg=2
+    hi DiffChange   ctermfg=black ctermbg=3
+    hi DiffDelete   ctermfg=black ctermbg=6
+    hi DiffText     ctermfg=black ctermbg=7
+
 endif
 
 " tab/indent
@@ -27,6 +59,8 @@ le g:netrw_altv = 1
 " ファイル名補完
 set wildmode=list:longest
 
+set showcmd
+
 " line number
 set nu
 
@@ -48,9 +82,72 @@ set diffopt=filler ", iwhite
 
 " statusline
 set laststatus=2
-let g:lightline = {
-    \ 'colorscheme': 'wombat',
-    \}
+if has("win32")
+    let g:lightline = {
+        \ 'colorscheme': 'wombat',
+        \}
+elseif has("mac")
+    let g:lightline = {
+            \ 'colorscheme': 'jellybeans',
+            \ 'mode_map': {'c': 'NORMAL'},
+            \ 'active': {
+            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+            \ },
+            \ 'component_function': {
+            \   'modified': 'MyModified',
+            \   'readonly': 'MyReadonly',
+            \   'fugitive': 'MyFugitive',
+            \   'filename': 'MyFilename',
+            \   'fileformat': 'MyFileformat',
+            \   'filetype': 'MyFiletype',
+            \   'fileencoding': 'MyFileencoding',
+            \   'mode': 'MyMode'
+            \ }
+            \ }
+
+    function! MyModified()
+      return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+    endfunction
+
+    function! MyReadonly()
+      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+    endfunction
+
+    function! MyFilename()
+      return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+            \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+            \  &ft == 'unite' ? unite#get_status_string() :
+            \  &ft == 'vimshell' ? vimshell#get_status_string() :
+            \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+            \ ('' != MyModified() ? ' ' . MyModified() : '')
+    endfunction
+
+    function! MyFugitive()
+      try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+          return fugitive#head()
+        endif
+      catch
+      endtry
+      return ''
+    endfunction
+
+    function! MyFileformat()
+      return winwidth(0) > 70 ? &fileformat : ''
+    endfunction
+
+    function! MyFiletype()
+      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+    endfunction
+
+    function! MyFileencoding()
+      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+    endfunction
+
+    function! MyMode()
+      return winwidth(0) > 60 ? lightline#mode() : ''
+    endfunction
+endif
 
 " bracket
 inoremap {<Enter> {}<Left><CR><ESC><s-o>
@@ -148,6 +245,13 @@ NeoBundle 'kana/vim-altr'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'h1mesuke/vim-alignta'
 
+" colorscheme
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+
 "NeoBundle 'Shougo/vimproc.vim', {
 "\ 'build' : {
 "\     'windows' : 'tools\\update-dll-mingw',
@@ -204,6 +308,7 @@ let g:quickrun_config.cpp_procon = { 'type': 'cpp', 'command': 'g++', 'cmdopt': 
 let g:quickrun_config.cpp_make = { 'command': '', 'hook/exist_makefile/enable': 1, 'hook/output_encode/enable': 1, 'hook/output_encode/encoding': 'cp932' }
 let g:quickrun_config.c_exe = { 'command': 'g++', 'exec': '%c %s', 'hook/output_encode/enable': 1, 'hook/output_encode/encoding': 'cp932' }
 let g:quickrun_config.html = { 'command': 'cat', 'outputter': 'browser' }
+let g:quickrun_config.python = {'hook/output_encode/enable' : 1, 'hook/output_encode/encoding' : 'utf-8:utf-8'}
 nnoremap <silent> [quickrun]x :QuickRun cpp_procon<CR>
 nnoremap <silent> [quickrun]m :QuickRun make_only<CR>
 nnoremap <silent> [quickrun]mr :QuickRun cpp_make<CR>
@@ -412,3 +517,8 @@ vnoremap <silent> [alignta]c :Alignta \:<CR>
 
 " Vinarise
 let g:vinarise_enable_auto_detect = 1
+
+if has("mac")
+    " colorscheme
+    colorscheme jellybeans
+endif
