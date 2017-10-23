@@ -196,6 +196,7 @@ endfunction
 
 " backup
 set nobackup
+set backupskip=/tmp/*,/private/tmp/*
 
 " plugin
 set runtimepath+=~/.vim/
@@ -252,14 +253,14 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 
-"NeoBundle 'Shougo/vimproc.vim', {
-"\ 'build' : {
-"\     'windows' : 'tools\\update-dll-mingw',
-"\     'cygwin' : 'make -f make_cygwin.mak',
-"\     'mac' : 'make',
-"\     'unix' : 'gmake',
-"\    },
-"\ }
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
 NeoBundleLocal ~/.vim/myplugin
 
