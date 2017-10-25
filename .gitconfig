@@ -4,12 +4,17 @@
 [color]
 	diff = auto
 [diff]
-    external = git_diff_wrapper
+    tool = vimdiff
+[difftool]
+	prompt = false
+[difftool "vimdiff"]
+    cmd = vimdiff $LOCAL $REMOTE
 [pager]
     diff =
 [alias]
     la = log --oneline --decorate --graph --branches --tags --remotes
-    dc = diff --cached
+    dt = difftool
+    dc = difftool --cached
     lskip = !git ls-files -v | grep ^S
     co = checkout
     st = status
