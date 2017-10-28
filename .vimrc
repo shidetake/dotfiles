@@ -88,7 +88,7 @@ if has("win32")
     let g:lightline = {
         \ 'colorscheme': 'wombat',
         \}
-elseif has("mac")
+else
     let g:lightline = {
             \ 'colorscheme': 'jellybeans',
             \ 'mode_map': {'c': 'NORMAL'},
@@ -201,20 +201,39 @@ set nobackup
 set backupskip=/tmp/*,/private/tmp/*
 
 "dein Scripts-----------------------------
+let g:cache_home = empty($XDG_CACHE_HOME) ? expand('$HOME/.cache') : $XDG_CACHE_HOME
+let g:config_home = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
+
+let s:dein_cache_dir = g:cache_home . '/dein'
+
+" reset augroup
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+if &runtimepath !~# '/dein.vim'
+  let s:dein_repo_dir = s:dein_cache_dir . '/repos/github.com/Shougo/dein.vim'
+
+  " Auto Download
+  if !isdirectory(s:dein_repo_dir)
+    call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+  endif
+
+  " dein.vim をプラグインとして読み込む
+  execute 'set runtimepath^=' . s:dein_repo_dir
+endif
+
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath+=/Users/shidetake/.vim/dein/repos/github.com/Shougo/dein.vim
-
-" Required:
-if dein#load_state('/Users/shidetake/.vim/dein')
-  call dein#begin('/Users/shidetake/.vim/dein')
+if dein#load_state(s:dein_cache_dir)
+  call dein#begin(s:dein_cache_dir)
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/shidetake/.vim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add(s:dein_repo_dir)
 
   " Add or remove your plugins here:
   "call dein#add('Shougo/neosnippet.vim')
@@ -231,7 +250,7 @@ if dein#load_state('/Users/shidetake/.vim/dein')
   call dein#add('Shougo/vinarise')
   call dein#add('astashov/vim-ruby-debugger')
   call dein#add('itchyny/lightline.vim')
-  call dein#add('vim-scripts/taglist.vim')
+  "call dein#add('vim-scripts/taglist.vim')
   call dein#add('tyru/current-func-info.vim')
   call dein#add('tyru/open-browser.vim')
   call dein#add('thinca/vim-quickrun')
@@ -600,7 +619,5 @@ vnoremap <silent> [alignta]c :Alignta \:<CR>
 " Vinarise
 let g:vinarise_enable_auto_detect = 1
 
-if has("mac")
-    " colorscheme
-    colorscheme jellybeans
-endif
+" colorscheme
+colorscheme jellybeans
