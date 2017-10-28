@@ -9,6 +9,10 @@
 	prompt = false
 [difftool "vimdiff"]
     cmd = vimdiff $LOCAL $REMOTE
+[merge]
+    tool = vimdiff
+[mergetool]
+    prompt = false
 [pager]
     diff =
 [alias]
