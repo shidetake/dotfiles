@@ -1,43 +1,37 @@
 let $MYVIMRC = "~/.vimrc"
 
-" shell
-if has("win32")
-    set shell=C:\Windows\system32\cmd.exe
-elseif has("mac")
-    " read vimrc_example
-    source $VIMRUNTIME/vimrc_example.vim
+" read vimrc_example
+source $VIMRUNTIME/vimrc_example.vim
 
-    " マウスホイールでスクロール
-    if !has('nvim')
-        set ttymouse=xterm2
-    endif
-    map <ScrollWheelUp> <C-Y>
-    map <S-ScrollWheelUp> <C-U>
-    map <ScrollWheelDown> <C-E>
-    map <S-ScrollWheelDown> <C-D>
-
-    " comment
-    map fc <Plug>(func_comment)
-
-    " clipboard
-    "set clipboard+=unnamed
-
-    " ビープ音を消す
-    set visualbell t_vb=
-
-    " 行数表示
-    set number
-
-    " インクリメンタルサーチ
-    set incsearch
-
-    " vim diff color
-    hi DiffAdd      ctermfg=black ctermbg=2
-    hi DiffChange   ctermfg=black ctermbg=3
-    hi DiffDelete   ctermfg=black ctermbg=6
-    hi DiffText     ctermfg=black ctermbg=7
-
+" マウスホイールでスクロール
+if !has('nvim')
+    set ttymouse=xterm2
 endif
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
+
+" comment
+map fc <Plug>(func_comment)
+
+" clipboard
+"set clipboard+=unnamed
+
+" ビープ音を消す
+set visualbell t_vb=
+
+" 行数表示
+set number
+
+" インクリメンタルサーチ
+set incsearch
+
+" vim diff color
+hi DiffAdd      ctermfg=black ctermbg=2
+hi DiffChange   ctermfg=black ctermbg=3
+hi DiffDelete   ctermfg=black ctermbg=6
+hi DiffText     ctermfg=black ctermbg=7
 
 " tab/indent
 set tabstop=4
@@ -84,72 +78,66 @@ set diffopt=filler ", iwhite
 
 " statusline
 set laststatus=2
-if has("win32")
-    let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \}
-else
-    let g:lightline = {
-            \ 'colorscheme': 'jellybeans',
-            \ 'mode_map': {'c': 'NORMAL'},
-            \ 'active': {
-            \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-            \ },
-            \ 'component_function': {
-            \   'modified': 'MyModified',
-            \   'readonly': 'MyReadonly',
-            \   'fugitive': 'MyFugitive',
-            \   'filename': 'MyFilename',
-            \   'fileformat': 'MyFileformat',
-            \   'filetype': 'MyFiletype',
-            \   'fileencoding': 'MyFileencoding',
-            \   'mode': 'MyMode'
-            \ }
-            \ }
+let g:lightline = {
+        \ 'colorscheme': 'jellybeans',
+        \ 'mode_map': {'c': 'NORMAL'},
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
+        \ },
+        \ 'component_function': {
+        \   'modified': 'MyModified',
+        \   'readonly': 'MyReadonly',
+        \   'fugitive': 'MyFugitive',
+        \   'filename': 'MyFilename',
+        \   'fileformat': 'MyFileformat',
+        \   'filetype': 'MyFiletype',
+        \   'fileencoding': 'MyFileencoding',
+        \   'mode': 'MyMode'
+        \ }
+        \ }
 
-    function! MyModified()
-      return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-    endfunction
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
 
-    function! MyReadonly()
-      return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-    endfunction
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
 
-    function! MyFilename()
-      return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-            \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-            \  &ft == 'unite' ? unite#get_status_string() :
-            \  &ft == 'vimshell' ? vimshell#get_status_string() :
-            \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-            \ ('' != MyModified() ? ' ' . MyModified() : '')
-    endfunction
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
 
-    function! MyFugitive()
-      try
-        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-          return fugitive#head()
-        endif
-      catch
-      endtry
-      return ''
-    endfunction
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
 
-    function! MyFileformat()
-      return winwidth(0) > 70 ? &fileformat : ''
-    endfunction
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
 
-    function! MyFiletype()
-      return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-    endfunction
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
 
-    function! MyFileencoding()
-      return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-    endfunction
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
 
-    function! MyMode()
-      return winwidth(0) > 60 ? lightline#mode() : ''
-    endfunction
-endif
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
 
 " bracket
 inoremap {<Enter> {}<Left><CR><ESC><s-o>
@@ -620,4 +608,6 @@ vnoremap <silent> [alignta]c :Alignta \:<CR>
 let g:vinarise_enable_auto_detect = 1
 
 " colorscheme
-colorscheme jellybeans
+if !has("win32")
+    colorscheme jellybeans
+end
