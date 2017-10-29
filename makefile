@@ -14,14 +14,14 @@ ifeq ($(OS),Windows_NT)
 	-$(MKLINK) $(HOME)\.git-completion.bash $(HOME)\dotfiles\.git-completion.bash
 	-$(MKLINK) $(HOME)\.git-prompt.sh $(HOME)\dotfiles\.git-prompt.sh
 else
-	ln -s ~/dotfiles/.vimrc ~/.vimrc
-	mkdir -p ~/.config/nvim
-	ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
-	ln -s ~/dotfiles/.gvimrc ~/.gvimrc
-	ln -s ~/dotfiles/.bashrc ~/.bashrc
-	ln -s ~/dotfiles/.bash_profile ~/.bash_profile
-	ln -s ~/dotfiles/.gitconfig ~/.gitconfig
-	ln -s ~/dotfiles/.gitignore ~/.gitignore
-	ln -s ~/dotfiles/.git-completion.bash ~/.git-completion.bash
-	ln -s ~/dotfiles/.git-prompt.sh ~/.git-prompt.sh
+	-ln -s ~/dotfiles/.vimrc ~/.vimrc
+	-mkdir -p ~/.config/nvim
+	-ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
+	-ln -s ~/dotfiles/.gvimrc ~/.gvimrc
+	-ln -s ~/dotfiles/.bashrc ~/.bashrc
+	-ln -s ~/dotfiles/.bash_profile ~/.bash_profile
+	-ln -s ~/dotfiles/.gitconfig ~/.gitconfig
+	-ln -s ~/dotfiles/.gitignore ~/.gitignore
+	-ln -s ~/dotfiles/.git-completion.bash ~/.git-completion.bash
+	-ln -s ~/dotfiles/.git-prompt.sh ~/.git-prompt.sh
 endif
