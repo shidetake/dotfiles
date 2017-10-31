@@ -253,7 +253,7 @@ if dein#load_state(s:dein_cache_dir)
   "call dein#add('kien/ctrlp.vim')
   call dein#add('scrooloose/syntastic')
   call dein#add('h1mesuke/vim-alignta')
-  call dein#add('Shougo/vimproc.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
     " colorscheme
   call dein#add('ujihisa/unite-colorscheme')
