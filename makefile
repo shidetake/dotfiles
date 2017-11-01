@@ -6,6 +6,9 @@ ifeq ($(OS),Windows_NT)
 	-$(MKLINK) $(HOME)\.vimrc $(HOME)\dotfiles\.vimrc
 	-$(MKDIR)  $(HOME)\.config\nvim
 	-$(MKLINK) $(HOME)\.config\nvim\init.vim $(HOME)\dotfiles\.vimrc
+ifndef XDG_CONFIG_HOME
+	-cmd.exe /C setx /M XDG_CONFIG_HOME $(HOME)\.config\\
+endif
 	-$(MKLINK) $(HOME)\.gvimrc $(HOME)\dotfiles\.gvimrc
 	-$(MKLINK) $(HOME)\.bashrc $(HOME)\dotfiles\.bashrc
 	-$(MKLINK) $(HOME)\.bash_profile $(HOME)\dotfiles\.bash_profile
