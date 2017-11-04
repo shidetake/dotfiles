@@ -1,5 +1,5 @@
-MKLINK = cmd.exe /C mklink
-MKDIR = cmd.exe /C mkdir
+MKLINK := cmd.exe /C mklink
+MKDIR := cmd.exe /C mkdir
 
 install:
 ifeq ($(OS),Windows_NT)
