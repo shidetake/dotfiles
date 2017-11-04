@@ -1,3 +1,4 @@
+MAKEFLAGS += --no-print-directory
 MKDIR := cmd.exe /C mkdir
 
 install:
