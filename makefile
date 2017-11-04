@@ -27,4 +27,6 @@ else
 	-ln -s ~/dotfiles/.gitignore ~/.gitignore
 	-ln -s ~/dotfiles/.git-completion.bash ~/.git-completion.bash
 	-ln -s ~/dotfiles/.git-prompt.sh ~/.git-prompt.sh
+	-ln -s ~/dotfiles/ftdetect ~/.config/nvim/ftdetect
+	-ln -s ~/dotfiles/syntax ~/.config/nvim/syntax
 endif
