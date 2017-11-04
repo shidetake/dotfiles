@@ -3,16 +3,16 @@ MKDIR := cmd.exe /C mkdir
 
 install:
 ifeq ($(OS),Windows_NT)
-	@cmd.exe /C if not exist $(HOME)\.config\nvim \
-		$(MKDIR)  $(HOME)\.config\nvim
+	@cmd.exe /C if not exist $(HOME)\.config \
+		$(MKDIR)  $(HOME)\.config
 ifndef XDG_CONFIG_HOME
 	-cmd.exe /C setx /M XDG_CONFIG_HOME $(HOME)\.config\\
 endif
 else
-	-mkdir -p ~/.config/nvim
+	-mkdir -p ~/.config
 endif
-	-make link SOURCE:=$(HOME)/dotfiles/.vimrc               TARGET:=$(HOME)/.vimrc
-	-make link SOURCE:=$(HOME)/dotfiles/.vimrc               TARGET:=$(HOME)/.config/nvim/init.vim
+	-make link SOURCE:=$(HOME)/dotfiles/nvim                 TARGET:=$(HOME)/.config/nvim
+	-make link SOURCE:=$(HOME)/dotfiles/nvim/init.vim        TARGET:=$(HOME)/.vimrc
 	-make link SOURCE:=$(HOME)/dotfiles/.gvimrc              TARGET:=$(HOME)/.gvimrc
 	-make link SOURCE:=$(HOME)/dotfiles/.bashrc              TARGET:=$(HOME)/.bashrc
 	-make link SOURCE:=$(HOME)/dotfiles/.bash_profile        TARGET:=$(HOME)/.bash_profile
@@ -20,8 +20,6 @@ endif
 	-make link SOURCE:=$(HOME)/dotfiles/.gitignore           TARGET:=$(HOME)/.gitignore
 	-make link SOURCE:=$(HOME)/dotfiles/.git-completion.bash TARGET:=$(HOME)/.git-completion.bash
 	-make link SOURCE:=$(HOME)/dotfiles/.git-prompt.sh       TARGET:=$(HOME)/.git-prompt.sh
-	-make link SOURCE:=$(HOME)/dotfiles/ftdetect             TARGET:=$(HOME)/.config/nvim/ftdetect
-	-make link SOURCE:=$(HOME)/dotfiles/syntax               TARGET:=$(HOME)/.config/nvim/syntax
 
 link:
 ifeq ($(OS),Windows_NT)
