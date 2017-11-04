@@ -3,30 +3,30 @@ MKDIR := cmd.exe /C mkdir
 
 install:
 ifeq ($(OS),Windows_NT)
-	-$(MKDIR)  $(HOME)\.config\nvim
+	@cmd.exe /C if not exist $(HOME)\.config\nvim \
+		$(MKDIR)  $(HOME)\.config\nvim
 ifndef XDG_CONFIG_HOME
 	-cmd.exe /C setx /M XDG_CONFIG_HOME $(HOME)\.config\\
 endif
 else
 	-mkdir -p ~/.config/nvim
 endif
-	-make link SOURCE:=~/dotfiles/.vimrc               TARGET:=~/.vimrc
-	-make link SOURCE:=~/dotfiles/.vimrc               TARGET:=~/.config/nvim/init.vim
-	-make link SOURCE:=~/dotfiles/.gvimrc              TARGET:=~/.gvimrc
-	-make link SOURCE:=~/dotfiles/.bashrc              TARGET:=~/.bashrc
-	-make link SOURCE:=~/dotfiles/.bash_profile        TARGET:=~/.bash_profile
-	-make link SOURCE:=~/dotfiles/.gitconfig           TARGET:=~/.gitconfig
-	-make link SOURCE:=~/dotfiles/.gitignore           TARGET:=~/.gitignore
-	-make link SOURCE:=~/dotfiles/.git-completion.bash TARGET:=~/.git-completion.bash
-	-make link SOURCE:=~/dotfiles/.git-prompt.sh       TARGET:=~/.git-prompt.sh
-	-make link SOURCE:=~/dotfiles/ftdetect             TARGET:=~/.config/nvim/ftdetect
-	-make link SOURCE:=~/dotfiles/syntax               TARGET:=~/.config/nvim/syntax
+	-make link SOURCE:=$(HOME)/dotfiles/.vimrc               TARGET:=$(HOME)/.vimrc
+	-make link SOURCE:=$(HOME)/dotfiles/.vimrc               TARGET:=$(HOME)/.config/nvim/init.vim
+	-make link SOURCE:=$(HOME)/dotfiles/.gvimrc              TARGET:=$(HOME)/.gvimrc
+	-make link SOURCE:=$(HOME)/dotfiles/.bashrc              TARGET:=$(HOME)/.bashrc
+	-make link SOURCE:=$(HOME)/dotfiles/.bash_profile        TARGET:=$(HOME)/.bash_profile
+	-make link SOURCE:=$(HOME)/dotfiles/.gitconfig           TARGET:=$(HOME)/.gitconfig
+	-make link SOURCE:=$(HOME)/dotfiles/.gitignore           TARGET:=$(HOME)/.gitignore
+	-make link SOURCE:=$(HOME)/dotfiles/.git-completion.bash TARGET:=$(HOME)/.git-completion.bash
+	-make link SOURCE:=$(HOME)/dotfiles/.git-prompt.sh       TARGET:=$(HOME)/.git-prompt.sh
+	-make link SOURCE:=$(HOME)/dotfiles/ftdetect             TARGET:=$(HOME)/.config/nvim/ftdetect
+	-make link SOURCE:=$(HOME)/dotfiles/syntax               TARGET:=$(HOME)/.config/nvim/syntax
 
 link:
 ifeq ($(OS),Windows_NT)
-	@if not exist $(TARGET) (
-		cmd.exe /C mklink $(TARGET) $(SOURCE)
-	)
+	@cmd.exe /C if not exist $(subst /,\,$(TARGET)) \
+		cmd.exe /C mklink $(subst /,\,$(TARGET)) $(subst /,\,$(SOURCE))
 else
 	@if [ ! -e $(TARGET) ]; then\
 		ln -s $(SOURCE) $(TARGET);\
