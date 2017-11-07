@@ -1,7 +1,6 @@
 *.swp
 .ruby-version
 .DS_Store
-tags
 *.un~
 GPATH
 GTAGS
