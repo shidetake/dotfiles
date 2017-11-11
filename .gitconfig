@@ -1,8 +1,6 @@
 [user]
 	name = shidetake
 	email = shidetake@gmail.com
-[color]
-	diff = auto
 [diff]
     tool = vimdiff
 [difftool]
@@ -13,17 +11,24 @@
     tool = vimdiff
 [mergetool]
     prompt = false
-[pager]
-    diff =
 [alias]
-    la = log --oneline --decorate --graph --branches --tags --remotes
+    la = log --pretty='medium-reverse' --decorate --graph --branches --tags --remotes --date=short
     dt = difftool
     dc = difftool --cached
-    lskip = !git ls-files -v | grep ^S
     co = checkout
     st = status
+    showtool = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="{0}"; fi;\
+        git log -1 --stat-width=800 $REVISION | grep \"|\" | awk \" {print \\$1}\" | peco | xargs -o git difftool $REVISION~ $REVISON'"
+    skip = update-index --skip-worktree
+    noskip = update-index --no-skip-worktree
+    lsskip = !git ls-files -v | grep ^S
+[pretty]
+    medium-reverse = format:%C(red reverse)%d%Creset%C(white reverse) %h %Creset%C(green reverse) %an %Creset%C(cyan) %ad (%ar)%Creset%n%C(white bold)%w(80)%s%Creset%n%w(80,2,2)%b
 [core]
-	editor = /usr/bin/vim
+    quotepath = false
+	editor = nvim
 	excludesfile = ~/.gitignore
-[push]
-	default = simple
+[help]
+    autocorrect = -1
+[include]
+    path = ~/.gitconfig.local
