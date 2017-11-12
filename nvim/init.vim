@@ -47,6 +47,10 @@ set fenc=cp932
 "set fenc=utf-8
 set fencs=guess,utf-8,iso-2022-jp,cp932
 
+" Neovimの日本語入力文字化け対策。最新では修正されているようだが、しばらく入れておく
+set ttimeout
+set ttimeoutlen=50
+
 " filer
 " tree view
 let g:netrw_liststyle = 3
