@@ -258,6 +258,7 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('scrooloose/syntastic')
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+  "call dein#add('shidetake/to-colored-html.vim')
 
     " colorscheme
   call dein#add('ujihisa/unite-colorscheme')
@@ -615,3 +616,7 @@ let g:vinarise_enable_auto_detect = 1
 if !has("win32")
     colorscheme jellybeans
 end
+
+" to-colored-html
+let g:tocoloredhtml_color = 'louver'
+let g:tocoloredhtml_bg = 'light'
