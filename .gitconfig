@@ -17,8 +17,8 @@
     dc = difftool --cached
     co = checkout
     st = status
-    showtool = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="{0}"; fi;\
-        git log -1 --stat-width=800 $REVISION | grep \"|\" | awk \" {print \\$1}\" | peco | xargs -o git difftool $REVISION~ $REVISON'"
+    showtool = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="${0}"; fi;\
+        git log -1 --stat-width=800 $REVISION | grep \"|\" | awk \" {print \\$1}\" | peco | xargs -o git difftool $REVISION~ $REVISION'"
     skip = update-index --skip-worktree
     noskip = update-index --no-skip-worktree
     lsskip = !git ls-files -v | grep ^S
