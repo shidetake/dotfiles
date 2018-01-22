@@ -1,7 +1,9 @@
 let $MYVIMRC = "~/.vimrc"
 
 " read vimrc_example
-source $VIMRUNTIME/vimrc_example.vim
+if !has('nvim')
+  source $VIMRUNTIME/vimrc_example.vim
+endif
 
 " マウスホイールでスクロール
 if !has('nvim')
