@@ -615,9 +615,9 @@ vnoremap <silent> [alignta]c :Alignta \:<CR>
 let g:vinarise_enable_auto_detect = 1
 
 " colorscheme
-if !has("win32")
-    colorscheme jellybeans
-end
+"if !has("win32")
+"    colorscheme jellybeans
+"end
 
 " to-colored-html
 let g:tocoloredhtml_color = 'louver'
