@@ -277,6 +277,10 @@ if dein#load_state(s:dein_cache_dir)
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
+  
+  " local
+  call dein#add('~/playground/vim/plugin/hello')
+  call dein#add('~/github/to-colored-html.vim')
 
   " Required:
   call dein#end()
