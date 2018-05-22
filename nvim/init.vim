@@ -76,6 +76,11 @@ set hlsearch
 " wrap
 set nowrap
 
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile                                                                                                                                   
+endif
+
 " mouse
 set mouse=a
 
