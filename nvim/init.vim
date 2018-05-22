@@ -279,8 +279,8 @@ if dein#load_state(s:dein_cache_dir)
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   
   " local
-  call dein#add('~/playground/vim/plugin/hello')
-  call dein#add('~/github/to-colored-html.vim')
+  "call dein#add('~/playground/vim/plugin/hello')
+  "call dein#add('~/github/to-colored-html.vim')
 
   " Required:
   call dein#end()
