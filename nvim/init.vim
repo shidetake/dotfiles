@@ -36,8 +36,8 @@ hi DiffDelete   ctermfg=black ctermbg=6
 hi DiffText     ctermfg=black ctermbg=7
 
 " tab/indent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set softtabstop=0
 
