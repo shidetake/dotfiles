@@ -20,6 +20,7 @@ endif
 	-make link SOURCE:=$(HOME)/dotfiles/.gitignore           TARGET:=$(HOME)/.gitignore
 	-make link SOURCE:=$(HOME)/dotfiles/.git-completion.bash TARGET:=$(HOME)/.git-completion.bash
 	-make link SOURCE:=$(HOME)/dotfiles/.git-prompt.sh       TARGET:=$(HOME)/.git-prompt.sh
+	-make link SOURCE:=$(HOME)/dotfiles/.rubocop.yml         TARGET:=$(HOME)/.rubocop.yml
 	-make link SOURCE:=$(HOME)/dotfiles/peco                 TARGET:=$(HOME)/.config/peco
 
 link:

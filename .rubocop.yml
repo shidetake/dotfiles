@@ -1,0 +1,9 @@
+# ASCII以外のコメントを許可
+Style/AsciiComments:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
