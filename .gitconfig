@@ -11,6 +11,8 @@
     tool = vimdiff
 [mergetool]
     prompt = false
+[mergetool "vimdiff"]
+    cmd = vimdiff $LOCAL $MERGED
 [alias]
     la = log --pretty='medium-reverse' --decorate --graph --branches --tags --remotes --date=short
     dt = difftool
