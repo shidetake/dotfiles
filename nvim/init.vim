@@ -262,7 +262,7 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('kana/vim-altr')
   "call dein#add('heavenshell/vim-quickrun-hook-sphinx')
   "call dein#add('kien/ctrlp.vim')
-  call dein#add('scrooloose/syntastic')
+  call dein#add('w0rp/ale')
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   "call dein#add('shidetake/to-colored-html.vim')
@@ -487,12 +487,6 @@ nnoremap <silent> ! :VimShellTab<CR>
 
 " comment
 nnoremap fc :CommentWrite<CR>
-
-" syntastic
-"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': ['ruby'] }
-let g:syntastic_ruby_chckers = ['rubocop']
-let g:syntastic_markdown_chckers = ['textlint']
-let g:syntastic_text_chckers = ['textlint']
 
 " Use deoplete.
 if has('nvim')
