@@ -496,6 +496,9 @@ nnoremap fc :CommentWrite<CR>
 " Use deoplete.
 if has('nvim')
   let g:deoplete#enable_at_startup = 1
+
+  inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  inoremap <silent><expr> <CR> pumvisible() ? deoplete#close_popup() : "\<CR>"
 endif
 
 ""-------------------------------- neocomplcache --------------------------------
