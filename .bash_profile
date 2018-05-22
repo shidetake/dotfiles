@@ -5,4 +5,8 @@ export PATH=$HOME/bin:$PATH
 export CLICOLOR=1
 export LSCOLORS=DxGxcxdxCxegedabagacad
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 source ~/.bashrc
