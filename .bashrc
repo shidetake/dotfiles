@@ -39,3 +39,4 @@ fi
 if which rbenv > /dev/null; then
     eval "$(rbenv init -)"
 fi
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
