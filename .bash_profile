@@ -11,4 +11,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+export RAILS_DATABASE_USER=root
+export RAILS_DATABASE_PASSWORD=sasap529
+
 source ~/.bashrc
