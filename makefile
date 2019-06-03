@@ -18,6 +18,7 @@ endif
 	-make link SOURCE:=$(HOME)/dotfiles/.bash_profile        TARGET:=$(HOME)/.bash_profile
 	-make link SOURCE:=$(HOME)/dotfiles/.gitconfig           TARGET:=$(HOME)/.gitconfig
 	-make link SOURCE:=$(HOME)/dotfiles/.gitignore           TARGET:=$(HOME)/.gitignore
+	-make link SOURCE:=$(HOME)/dotfiles/.gitmessage          TARGET:=$(HOME)/.gitmessage
 	-make link SOURCE:=$(HOME)/dotfiles/.git-completion.bash TARGET:=$(HOME)/.git-completion.bash
 	-make link SOURCE:=$(HOME)/dotfiles/.git-prompt.sh       TARGET:=$(HOME)/.git-prompt.sh
 	-make link SOURCE:=$(HOME)/dotfiles/.rubocop.yml         TARGET:=$(HOME)/.rubocop.yml
