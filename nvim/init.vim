@@ -262,10 +262,10 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('kana/vim-altr')
   "call dein#add('heavenshell/vim-quickrun-hook-sphinx')
   "call dein#add('kien/ctrlp.vim')
-  call dein#add('w0rp/ale')
+  "call dein#add('w0rp/ale')
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  "call dein#add('shidetake/to-colored-html.vim')
+  call dein#add('shidetake/to-colored-html.vim')
   call dein#add('vim-jp/vimdoc-ja')
 
     " colorscheme
@@ -279,6 +279,7 @@ if dein#load_state(s:dein_cache_dir)
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   
   " local
+  call dein#add('~/git/ale')
   "call dein#add('~/playground/vim/plugin/hello')
   "call dein#add('~/github/to-colored-html.vim')
 
@@ -446,7 +447,7 @@ nnoremap <silent> [unite]wg :Unite -auto-preview -tab -no-empty grep:. -w -buffe
 nnoremap <silent> [unite]r :UniteResume -buffer-name=search-buffer<CR>
 if executable('pt')
     let g:unite_source_grep_command = 'pt'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case --vcs-ignore ~/.ptignore'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case'
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 endif
@@ -622,10 +623,13 @@ vnoremap <silent> [alignta]c :Alignta \:<CR>
 let g:vinarise_enable_auto_detect = 1
 
 " colorscheme
-"if !has("win32")
-"    colorscheme jellybeans
-"end
+if !has("win32")
+    colorscheme jellybeans
+end
 
 " to-colored-html
 let g:tocoloredhtml_color = 'louver'
 let g:tocoloredhtml_bg = 'light'
+
+" ale
+let g:ale_vhdl_ghdl_options = '--mb-comments --ieee=synopsys'
