@@ -1,9 +1,40 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
 # ASCII以外のコメントを許可
 Style/AsciiComments:
+  Enabled: false
+
+Style/YodaCondition:
   Enabled: false
 
 Metrics/MethodLength:
   Enabled: false
 
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
 Metrics/AbcSize:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Lint/LiteralAsCondition:
+  Enabled: false
+
+Style/RedundantFreeze:
+  Enabled: true
+  Exclude:
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
