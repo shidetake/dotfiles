@@ -5,6 +5,12 @@ if !has('nvim')
   source $VIMRUNTIME/vimrc_example.vim
 endif
 
+" 最後のカーソル位置で開始
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
+
 " マウスホイールでスクロール
 if !has('nvim')
     set ttymouse=xterm2
@@ -262,7 +268,7 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('kana/vim-altr')
   "call dein#add('heavenshell/vim-quickrun-hook-sphinx')
   "call dein#add('kien/ctrlp.vim')
-  "call dein#add('w0rp/ale')
+  call dein#add('w0rp/ale')
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   call dein#add('shidetake/to-colored-html.vim')
@@ -279,7 +285,7 @@ if dein#load_state(s:dein_cache_dir)
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   
   " local
-  call dein#add('~/git/ale')
+  "call dein#add('~/git/ale')
   "call dein#add('~/playground/vim/plugin/hello')
   "call dein#add('~/github/to-colored-html.vim')
 
