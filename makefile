@@ -11,18 +11,18 @@ endif
 else
 	-mkdir -p ~/.config
 endif
-	-make link SOURCE:=$(HOME)/dotfiles/nvim                 TARGET:=$(HOME)/.config/nvim
-	-make link SOURCE:=$(HOME)/dotfiles/nvim/init.vim        TARGET:=$(HOME)/.vimrc
-	-make link SOURCE:=$(HOME)/dotfiles/.gvimrc              TARGET:=$(HOME)/.gvimrc
-	-make link SOURCE:=$(HOME)/dotfiles/.bashrc              TARGET:=$(HOME)/.bashrc
-	-make link SOURCE:=$(HOME)/dotfiles/.bash_profile        TARGET:=$(HOME)/.bash_profile
-	-make link SOURCE:=$(HOME)/dotfiles/.gitconfig           TARGET:=$(HOME)/.gitconfig
-	-make link SOURCE:=$(HOME)/dotfiles/.gitignore           TARGET:=$(HOME)/.gitignore
-	-make link SOURCE:=$(HOME)/dotfiles/.gitmessage          TARGET:=$(HOME)/.gitmessage
-	-make link SOURCE:=$(HOME)/dotfiles/.git-completion.bash TARGET:=$(HOME)/.git-completion.bash
-	-make link SOURCE:=$(HOME)/dotfiles/.git-prompt.sh       TARGET:=$(HOME)/.git-prompt.sh
-	-make link SOURCE:=$(HOME)/dotfiles/.rubocop.yml         TARGET:=$(HOME)/.rubocop.yml
-	-make link SOURCE:=$(HOME)/dotfiles/peco                 TARGET:=$(HOME)/.config/peco
+	-make link SOURCE:=$(CURDIR)/nvim                 TARGET:=$(HOME)/.config/nvim
+	-make link SOURCE:=$(CURDIR)/nvim/init.vim        TARGET:=$(HOME)/.vimrc
+	-make link SOURCE:=$(CURDIR)/.gvimrc              TARGET:=$(HOME)/.gvimrc
+	-make link SOURCE:=$(CURDIR)/.bashrc              TARGET:=$(HOME)/.bashrc
+	-make link SOURCE:=$(CURDIR)/.bash_profile        TARGET:=$(HOME)/.bash_profile
+	-make link SOURCE:=$(CURDIR)/.gitconfig           TARGET:=$(HOME)/.gitconfig
+	-make link SOURCE:=$(CURDIR)/.gitignore           TARGET:=$(HOME)/.gitignore
+	-make link SOURCE:=$(CURDIR)/.gitmessage          TARGET:=$(HOME)/.gitmessage
+	-make link SOURCE:=$(CURDIR)/.git-completion.bash TARGET:=$(HOME)/.git-completion.bash
+	-make link SOURCE:=$(CURDIR)/.git-prompt.sh       TARGET:=$(HOME)/.git-prompt.sh
+	-make link SOURCE:=$(CURDIR)/.rubocop.yml         TARGET:=$(HOME)/.rubocop.yml
+	-make link SOURCE:=$(CURDIR)/peco                 TARGET:=$(HOME)/.config/peco
 
 link:
 ifeq ($(OS),Windows_NT)
