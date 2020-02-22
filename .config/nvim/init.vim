@@ -280,6 +280,7 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('w0ng/vim-hybrid')
   call dein#add('nanotech/jellybeans.vim')
   call dein#add('altercation/vim-colors-solarized')
+  call dein#add('sophacles/vim-processing')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
