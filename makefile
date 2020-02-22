@@ -6,6 +6,7 @@ install:
 	-make link SOURCE:=$(CURDIR)/.config/nvim/init.vim TARGET:=$(HOME)/.vimrc
 	-make link SOURCE:=$(CURDIR)/.gvimrc               TARGET:=$(HOME)/.gvimrc
 	-make link SOURCE:=$(CURDIR)/.bashrc               TARGET:=$(HOME)/.bashrc
+	-make link SOURCE:=$(CURDIR)/.zshrc                TARGET:=$(HOME)/.zshrc
 	-make link SOURCE:=$(CURDIR)/.bash_profile         TARGET:=$(HOME)/.bash_profile
 	-make link SOURCE:=$(CURDIR)/.gitconfig            TARGET:=$(HOME)/.gitconfig
 	-make link SOURCE:=$(CURDIR)/.gitignore            TARGET:=$(HOME)/.gitignore
