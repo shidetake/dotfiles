@@ -15,8 +15,11 @@ fi
 #source ~/.git-completion.bash
 #GIT_PS1_SHOWDIRTYSTATE=true
 #export PS1='\u@\h:\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
-if [ -e /usr/local/share/zsh-completions ]; then
-  fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
 fi
 
 alias sjis2utf='iconv -f SHIFT_JIS -t UTF-8'
