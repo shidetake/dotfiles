@@ -100,6 +100,8 @@ set mouse=a
 " diff
 set diffopt=filler ", iwhite
 
+set helplang=ja,en
+
 " statusline
 set laststatus=2
 let g:lightline = {
@@ -275,11 +277,14 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('kana/vim-altr')
   "call dein#add('heavenshell/vim-quickrun-hook-sphinx')
   "call dein#add('kien/ctrlp.vim')
-  call dein#add('w0rp/ale')
+  "call dein#add('w0rp/ale')
+  call dein#add('shidetake/ale', { 'rev': 'ghdl' })
   call dein#add('h1mesuke/vim-alignta')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
-  call dein#add('shidetake/to-colored-html.vim')
+  "call dein#add('shidetake/to-colored-html.vim')
   call dein#add('vim-jp/vimdoc-ja')
+  call dein#add('t9md/vim-quickhl')
+  call dein#add('rhysd/vim-clang-format')
 
     " colorscheme
   call dein#add('ujihisa/unite-colorscheme')
@@ -287,14 +292,11 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('w0ng/vim-hybrid')
   call dein#add('nanotech/jellybeans.vim')
   call dein#add('altercation/vim-colors-solarized')
-  call dein#add('sophacles/vim-processing')
-  call dein#add('t9md/vim-quickhl')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   
   " local
-  "call dein#add('~/git/ale')
   "call dein#add('~/playground/vim/plugin/hello')
   "call dein#add('~/github/to-colored-html.vim')
 
@@ -462,7 +464,7 @@ nnoremap <silent> [unite]wg :Unite -auto-preview -tab -no-empty grep:. -w -buffe
 nnoremap <silent> [unite]r :UniteResume -buffer-name=search-buffer<CR>
 if executable('pt')
     let g:unite_source_grep_command = 'pt'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --ignore-case --vcs-ignore ~/.ptignore'
     let g:unite_source_grep_recursive_opt = ''
     let g:unite_source_grep_encoding = 'utf-8'
 endif
