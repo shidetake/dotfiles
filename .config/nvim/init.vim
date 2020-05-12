@@ -651,6 +651,7 @@ let g:tocoloredhtml_bg = 'light'
 " ale
 let g:ale_vhdl_ghdl_options = '--mb-comments --ieee=synopsys'
 
+" quickhl
 nmap <Space>m <Plug>(quickhl-manual-this-whole-word)
 xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
