@@ -1,15 +1,13 @@
 let $MYVIMRC = "~/.vimrc"
 
+if has('win64')
+  set shell=C:\Windows\system32\cmd.exe
+endif
+
 " read vimrc_example
 if !has('nvim')
   source $VIMRUNTIME/vimrc_example.vim
 endif
-
-" 最後のカーソル位置で開始
-augroup vimrcEx
-  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" | endif
-augroup END
 
 " マウスホイールでスクロール
 if !has('nvim')
@@ -31,6 +29,12 @@ set visualbell t_vb=
 
 " 行数表示
 set number
+
+" 最後のカーソル位置で開始
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 
 " インクリメンタルサーチ
 set incsearch
@@ -63,6 +67,9 @@ set ttimeoutlen=50
 " tree view
 let g:netrw_liststyle = 3
 le g:netrw_altv = 1
+
+" タイトルバーにファイル名を表示
+set title
 
 " ファイル名補完
 set wildmode=list:longest
@@ -281,6 +288,7 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('nanotech/jellybeans.vim')
   call dein#add('altercation/vim-colors-solarized')
   call dein#add('sophacles/vim-processing')
+  call dein#add('t9md/vim-quickhl')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -640,3 +648,8 @@ let g:tocoloredhtml_bg = 'light'
 
 " ale
 let g:ale_vhdl_ghdl_options = '--mb-comments --ieee=synopsys'
+
+nmap <Space>m <Plug>(quickhl-manual-this-whole-word)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
