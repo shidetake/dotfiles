@@ -29,6 +29,9 @@ Metrics/CyclomaticComplexity:
 Lint/LiteralAsCondition:
   Enabled: false
 
+Lint/NonLocalExitFromIterator:
+  Enabled: false
+
 Style/RedundantFreeze:
   Enabled: true
   Exclude:
@@ -37,4 +40,7 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
   Enabled: false
