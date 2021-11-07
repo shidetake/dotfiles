@@ -89,7 +89,7 @@ set hlsearch
 " wrap
 set nowrap
 
-if has('persistent_undo')
+if has('persistent_undo') && !&diff
   set undodir=~/.vim/undo
   set undofile
 endif
