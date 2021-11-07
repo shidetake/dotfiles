@@ -91,7 +91,7 @@ set nowrap
 
 if has('persistent_undo')
   set undodir=~/.vim/undo
-  set undofile                                                                                                                                   
+  set undofile
 endif
 
 " mouse
