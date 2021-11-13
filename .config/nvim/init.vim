@@ -501,9 +501,14 @@ set runtimepath+=~/.vim/after
 " filetype
 au BufNewFile, BufRead *.{md, mdwn, mkd, mkdn, mark*} set filetype=markdown
 au BufNewFile, BufRead *.graph set filetype=graph
-au BufNewFile, BufRead *_spec.rb set filetype=ruby.rspec
+"au BufNewFile, BufRead *_spec.rb set filetype=ruby.rspec
 au BufNewFile, BufRead *.diag set filetype=blockdiag
 au BufNewFile, BufRead *.cls set filetype=vb
+
+augroup my_rspec
+  autocmd!
+  autocmd BufEnter *_spec.rb set filetype=ruby.rspec
+augroup END
 
 " vimshell
 nnoremap <silent> ! :VimShellTab<CR>
