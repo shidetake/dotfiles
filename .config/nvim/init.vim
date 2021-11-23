@@ -428,6 +428,7 @@ let g:quickrun_config.cpp_make = { 'command': '', 'hook/exist_makefile/enable': 
 let g:quickrun_config.c_exe = { 'command': 'g++', 'exec': '%c %s', 'hook/output_encode/enable': 1, 'hook/output_encode/encoding': 'cp932' }
 let g:quickrun_config.html = { 'command': 'cat', 'outputter': 'browser' }
 let g:quickrun_config.python = {'hook/output_encode/enable' : 1, 'hook/output_encode/encoding' : 'utf-8:utf-8'}
+nnoremap <silent> [quickrun]r :QuickRun<CR>
 nnoremap <silent> [quickrun]x :QuickRun cpp_procon<CR>
 nnoremap <silent> [quickrun]m :QuickRun make_only<CR>
 nnoremap <silent> [quickrun]mr :QuickRun cpp_make<CR>

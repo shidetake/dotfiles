@@ -1,3 +1,4 @@
+echo .bashrc
 if [ "$(uname)" == "Darwin" ]; then
     os=osx
 elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then

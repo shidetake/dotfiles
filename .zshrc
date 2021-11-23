@@ -35,7 +35,7 @@ if [ $os = "osx" ]; then
 #    alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
     alias lsusb='system_profiler SPUSBDataType'
 
-    export EDITOR=/usr/local/bin/vim
+    #export EDITOR=/usr/local/bin/vim
     export GOPATH=$HOME/.go
     export PATH=$PATH:$GOPATH/bin
 fi
@@ -50,5 +50,5 @@ if which rbenv > /dev/null; then
     eval "$(rbenv init -)"
 fi
 #export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="/opt/homebrew/opt/mozjpeg/bin:$PATH"
