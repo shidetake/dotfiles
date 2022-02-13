@@ -622,7 +622,7 @@ nnoremap [fugitive] <nop>
 nmap <Space>g [fugitive]
 
 " keymap
-nnoremap <silent> [fugitive]b :Gblame -w<CR>
+nnoremap <silent> [fugitive]b :Git blame -w<CR>
 nnoremap <silent> [fugitive]d :Gdiff<CR>
 nnoremap <silent> [fugitive]s :Gstatus<CR>
 nnoremap <silent> [fugitive]w :Gwrite<CR>
