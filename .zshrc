@@ -11,10 +11,29 @@ if [ -f ~/.zshrc.local ]; then
 fi
 
 # git completion
-#source ~/.git-prompt.sh
-#source ~/.git-completion.bash
-#GIT_PS1_SHOWDIRTYSTATE=true
-#export PS1='\u@\h:\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '
+source $(brew --prefix)/opt/zsh-git-prompt/zshrc.sh
+git_prompt() {
+  if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = true ]; then
+    PROMPT='%F{034}%n%f %F{036}%f:%F{020}%~%f $(git_super_status)'
+    PROMPT+=""$'\n'"%# "
+  else
+    PROMPT="%F{034}%n%f %F{036}%f:%F{020}%~%f "$'\n'"%# "
+  fi
+}
+
+add_newline() {
+  if [[ -z $PS1_NEWLINE_LOGIN ]]; then
+    PS1_NEWLINE_LOGIN=true
+  else
+    printf '\n'
+  fi
+}
+
+precmd() {
+  git_prompt
+  add_newline
+}
+
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 
