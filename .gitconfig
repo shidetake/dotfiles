@@ -13,28 +13,43 @@
   prompt = false
 [mergetool "vimdiff"]
   cmd = vimdiff $LOCAL $MERGED
-[alias]
-  la = log --pretty='medium-reverse' --decorate --graph --branches --tags --remotes --date=short
-  log-oneline = log --pretty='oneline-date' --date=short
-  dt = difftool
-  dc = difftool --cached
-  co = checkout
-  st = status
-  showtool = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="${0}"; fi;\
-              git log -1 --stat-width=800 $REVISION | grep \"|\" | awk \" {print \\$1}\" | peco | xargs -o git difftool $REVISION~ $REVISION'"
-  skip = update-index --skip-worktree
-  noskip = update-index --no-skip-worktree
-  lsskip = !git ls-files -v | grep ^S
-[pretty]
-  medium-reverse = format:%C(red reverse)%d%Creset%C(white reverse) %h %Creset%C(green reverse) %an %Creset%C(cyan) %ad (%ar)%Creset%n%C(white bold)%w(80)%s%Creset%n%w(80,2,2)%b
-  oneline-date = format:%h\t%ad\t%<(15,trunc)%an\t%s\t%C(red reverse)%d%Creset
 [core]
   quotepath = false
   editor = nvim
   excludesfile = ~/.gitignore
-[help]
-  autocorrect = -1
-[include]
-  path = ~/.gitconfig.local
+[alias]
+  la = log --pretty='medium-reverse' --decorate --graph --branches --tags --remotes --date=format:'%Y/%m/%d %H:%M'
+  log-svn-tmp = log --pretty='svn-oneline' --date=short
+  log-oneline = log --pretty='oneline-date' --date=short
+  log-svn = "!sh -c 'git log-svn-tmp | sed "s/\"^.*@\\([0-9]*\\).*\t\"/\"Revision:\\1 \"/g"'"
+  dt = difftool
+  dc = difftool --cached
+  co = checkout
+  st = status
+  showall = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="${0}"; fi;\
+             git difftool $REVISION~ $REVISION'"
+  showtool = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="${0}"; fi;\
+              git log -1 --stat-width=800 $REVISION | grep \"|\" | awk \" {print \\$1}\" | peco | xargs -o git difftool $REVISION~ $REVISION'"
+  skip = update-index --skip-worktree
+  noskip = update-index --no-skip-worktree
+  lsskip = !git ls-files -v | grep '^S'
+  svn-remote = config --local --get svn-remote.svn.url
+  svn-remote-dir = "!sh -c 'basename "$(git config --local --get svn-remote.svn.url)"'"
+  patch = "!sh -c 'if [ "sh" == "${0}" ]; then REVISION="HEAD"; else REVISION="${0}"; fi;\
+           git difftool --no-ext-diff --no-prefix $REVISION~ $REVISION'"
+[push]
+  default = current
+[pretty]
+  medium-reverse = format:%C(red reverse)%d%Creset%C(white reverse) %h %Creset%C(green reverse) %an %Creset%C(cyan) %ad (%ar)%Creset%n%C(white bold)%w(80)%s%Creset%n%w(80,2,2)%b
+  oneline-date = format:%h\t%ad\t%<(15,trunc)%an\t%s\t%C(red reverse)%d%Creset
+  svn-oneline = format:%<(50,ltrunc)%b%-\t%s
+[color]
+  ui = always
 [commit]
   template = ~/.gitmessage
+[help]
+  autocorrect = -1
+[svn]
+  rmdir = true
+[include]
+  path = ~/.gitconfig.local
