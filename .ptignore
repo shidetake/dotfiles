@@ -1,0 +1,11 @@
+*.ngc
+*.tbl
+*.bld
+*.opensdf
+*.orig
+*.bak
+*.LOCAL.*
+*.REMOTE.*
+*.map
+*.lst
+*.pbw

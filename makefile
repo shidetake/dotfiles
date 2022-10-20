@@ -15,6 +15,7 @@ install:
 	-make link SOURCE:=$(CURDIR)/.git-completion.bash  TARGET:=$(HOME)/.git-completion.bash
 	-make link SOURCE:=$(CURDIR)/.git-prompt.sh        TARGET:=$(HOME)/.git-prompt.sh
 	-make link SOURCE:=$(CURDIR)/.rubocop.yml          TARGET:=$(HOME)/.rubocop.yml
+	-make link SOURCE:=$(CURDIR)/.ptignore             TARGET:=$(HOME)/.ptignore
 
 link:
 ifeq ($(OS),Windows_NT)
