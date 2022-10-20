@@ -6,3 +6,8 @@ GPATH
 GTAGS
 GRTAGS
 .Rhistory
+*.bak
+*.orig
+*.BASE.*
+*.LOCAL.*
+*.REMOTE.*
