@@ -1,3 +1,9 @@
+[include]
+  path = ~/.gitconfig.os
+  path = ~/.gitconfig.local
+[core]
+  quotepath = false
+  excludesfile = ~/.gitignore
 [diff]
   tool = vimdiff
 [difftool]
@@ -6,9 +12,6 @@
   tool = vimdiff
 [mergetool]
   prompt = false
-[core]
-  quotepath = false
-  excludesfile = ~/.gitignore
 [alias]
   la = log --pretty='medium-reverse' --decorate --graph --branches --tags --remotes --date=format:'%Y/%m/%d %H:%M'
   log-svn-tmp = log --pretty='svn-oneline' --date=short
@@ -43,6 +46,3 @@
   autocorrect = -1
 [svn]
   rmdir = true
-[include]
-  path = ~/.gitconfig.os
-  path = ~/.gitconfig.local
