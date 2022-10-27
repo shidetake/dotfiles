@@ -1,0 +1,6 @@
+alias ls='ls --show-control-chars --color'
+alias open='start'
+alias nvim='nvim-qt --maximized --no-ext-tabline'
+alias tree='tree.com'
+alias c='pygmentize -O style=monokai -f console256 -g'
+alias uru='uru.bat'

@@ -1,0 +1,22 @@
+export EDITOR=/usr/local/bin/vim
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
+
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.rbenv/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=$HOME/bin/ghdl/bin:$PATH
+export PATH=/Applications/MakeMKV.app/Contents/MacOS:$PATH
+export PATH=/Applications/calibre.app/Contents/MacOS:$PATH
+
+export CLICOLOR=1
+export LSCOLORS=DxGxcxdxCxegedabagacad
+
+export RAILS_DATABASE_USER=root
+export RAILS_DATABASE_PASSWORD=
+
+# git completion
+source ~/.git-prompt.sh
+source ~/.git-completion.bash
+GIT_PS1_SHOWDIRTYSTATE=true
+export PS1='\u@\h:\w\[\033[31m\]$(__git_ps1)\[\033[00m\]\$ '

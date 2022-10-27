@@ -1,21 +1,13 @@
-[user]
-  name = shidetake
-  email = shidetake@gmail.com
 [diff]
   tool = vimdiff
 [difftool]
   prompt = false
-[difftool "vimdiff"]
-  cmd = vimdiff $LOCAL $REMOTE
 [merge]
   tool = vimdiff
 [mergetool]
   prompt = false
-[mergetool "vimdiff"]
-  cmd = vimdiff $LOCAL $MERGED
 [core]
   quotepath = false
-  editor = nvim
   excludesfile = ~/.gitignore
 [alias]
   la = log --pretty='medium-reverse' --decorate --graph --branches --tags --remotes --date=format:'%Y/%m/%d %H:%M'
@@ -52,4 +44,5 @@
 [svn]
   rmdir = true
 [include]
+  path = ~/.gitconfig.os
   path = ~/.gitconfig.local

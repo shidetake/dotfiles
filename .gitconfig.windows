@@ -1,0 +1,14 @@
+[core]
+  editor = nvim-qt
+[difftool "vimdiff"]
+  cmd = "nvim-qt -- -d \"$LOCAL\" \"$REMOTE\""
+[difftool "WinMerge"]
+  path = C:/Program Files/WinMerge/WinMergeU.exe
+  cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" -e -ub -dl \"Base\" -dr \"Mine - $REMOTE\" \"$LOCAL\" \"$REMOTE\"
+[mergetool "vimdiff"]
+  cmd = "nvim-qt -- -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "WinMerge"]
+  path = C:/Program Files/WinMerge/WinMergeU.exe
+  cmd = \"C:/Program Files/WinMerge/WinMergeU.exe\" \"$MERGED\"
+[gui]
+  encoding = utf-8

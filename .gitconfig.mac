@@ -1,0 +1,7 @@
+[core]
+  editor = nvim
+[difftool "vimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE
+[mergetool "vimdiff"]
+  cmd = nvim -d $LOCAL $MERGED
+

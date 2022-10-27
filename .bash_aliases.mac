@@ -1,0 +1,2 @@
+alias ctags='/usr/local/Cellar/ctags/5.8/bin/ctags'
+alias lsusb='system_profiler SPUSBDataType'
