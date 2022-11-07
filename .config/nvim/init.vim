@@ -347,6 +347,7 @@ let g:quickrun_config['ruby.rspec'] = { 'command': 'rspec', 'exec': '%c %o %s:%{
 let g:quickrun_config['blockdiag'] = { 'runner': 'system', 'command': 'blockdiag', 'exec': ['%c %s', 'i_view32 % {expand("%:p:r")}.png'], 'outputter': 'message' }
 let g:quickrun_config['rst'] = { 'command': 'make', 'cmdopt': 'html' }
 let g:quickrun_config['cpp'] = { 'type': 'cpp/clang++' }
+let g:quickrun_config['c'] = { 'type': 'c/gcc' }
 let g:quickrun_config.make = { 'command': 'make', 'exec': '%c', 'hook/make_exec/enable': 1, 'hook/output_encode/enable': 1, 'hook/output_encode/encoding': 'cp932' }
 let g:quickrun_config.make_only = { 'command': 'make', 'exec': '%c', 'hook/output_encode/enable': 1, 'hook/output_encode/encoding': 'cp932' }
 let g:quickrun_config.exec_only = { 'command': expand('%:p:r'), 'exec': '%c', 'hook/output_encode/enable': 1 }
