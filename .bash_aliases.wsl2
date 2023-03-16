@@ -1,0 +1,2 @@
+echo .bash_aliases.wsl2
+alias clip='sudo /mnt/c/WINDOWS/System32/clip.exe'

@@ -23,7 +23,7 @@ ifeq ($(OS),Windows_NT)
 else ifneq ($(WSL_DISTRO_NAME),)
 	-make link SOURCE:=$(CURDIR)/.gitconfig.mac        TARGET:=$(HOME)/.gitconfig.os
 	-make link SOURCE:=$(CURDIR)/.bashrc.mac           TARGET:=$(HOME)/.bashrc.os
-	-make link SOURCE:=$(CURDIR)/.bash_aliases.mac     TARGET:=$(HOME)/.bash_aliases.os
+	-make link SOURCE:=$(CURDIR)/.bash_aliases.wsl2    TARGET:=$(HOME)/.bash_aliases.os
 else
 	-make link SOURCE:=$(CURDIR)/.gitconfig.mac        TARGET:=$(HOME)/.gitconfig.os
 	-make link SOURCE:=$(CURDIR)/.bashrc.mac           TARGET:=$(HOME)/.bashrc.os
