@@ -1,5 +1,7 @@
+echo .bash_aliases
 alias sjis2utf='iconv -f SHIFT_JIS -t UTF-8'
 alias utf2sjis='iconv -f UTF-8 -t SHIFT_JIS'
+alias utf162utf8='iconv -f UTF-16 -t UTF-8'
 alias gtagsc='gtags --gtagslabel=ctags'
 alias gtagspy='gtags --gtagslabel=pygments'
 alias ic='sed -r "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[mGK]//g"'

@@ -273,7 +273,7 @@ if dein#load_state(s:dein_cache_dir)
   call dein#add('thinca/vim-localrc')
   call dein#add('thinca/vim-fontzoom')
   call dein#add('tpope/vim-fugitive')
-  call dein#add('kannokanno/previm')
+  call dein#add('previm/previm')
   "call dein#add('kannokanno/previm', '27-fix-rst2html-on-windows')
   "call dein#add('mopp.next-alter.vim')
   call dein#add('kana/vim-altr')
@@ -281,7 +281,7 @@ if dein#load_state(s:dein_cache_dir)
   "call dein#add('kien/ctrlp.vim')
   "call dein#add('w0rp/ale')
   call dein#add('shidetake/ale', { 'rev': 'ghdl' })
-  call dein#add('h1mesuke/vim-alignta')
+  call dein#add('junegunn/vim-easy-align')
   call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
   "call dein#add('shidetake/to-colored-html.vim')
   call dein#add('vim-jp/vimdoc-ja')
@@ -458,11 +458,11 @@ nmap [altr]h <Plug>(altr-back)
 
 call altr#define('autoload/%.vim', 'doc/%.txt', 'plugin/%.vim')
 
-" vim-alignta
-vnoremap [alignta] <nop>
-vmap <space>a [alignta]
-vnoremap <silent> [alignta]\| :Alignta \|<CR>
-vnoremap <silent> [alignta]c :Alignta \:<CR>
+" vim-easy-align
+"vnoremap [easy-align] <nop>
+"vmap <space>a [easy-align]
+"vnoremap <silent> [easy-align]\| :Alignta \|<CR>
+"vnoremap <silent> [easy-align]c :Alignta \:<CR>
 
 " Vinarise
 "let g:vinarise_enable_auto_detect = 1

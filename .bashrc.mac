@@ -1,3 +1,4 @@
+echo .bashrc.mac
 export EDITOR=/usr/local/bin/vim
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin

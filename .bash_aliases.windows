@@ -1,6 +1,9 @@
+echo .bash_aliases.windows
 alias ls='ls --show-control-chars --color'
 alias open='start'
 alias nvim='nvim-qt --maximized --no-ext-tabline'
+alias nvimdiff='nvim-qt --maximized --no-ext-tabline -- -d'
+alias vimdiff='nvim-qt --maximized --no-ext-tabline -- -d'
 alias tree='tree.com'
 alias c='pygmentize -O style=monokai -f console256 -g'
 alias uru='uru.bat'
